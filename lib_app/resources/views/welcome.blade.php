@@ -13,6 +13,7 @@
    
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/site.css') }}" rel="stylesheet">
        
     </head>
     <body>
@@ -21,5 +22,9 @@
             @yield('content')
         </section>  
         @include('inc.footer')
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        </script>
+
     </body>
 </html>

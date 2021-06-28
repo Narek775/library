@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Book;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $books = Book::where('status',1)
+                     ->orderBy('id', 'desc')
+                     ->get();
+        
+        return view('index',['books' => $books]);
     }
 }
