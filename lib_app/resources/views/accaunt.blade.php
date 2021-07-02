@@ -31,11 +31,11 @@
           </a>
         </div>
         <div class="ml-5">
-          <h5>Author | <a href="">{{$book->author->name}}</a></h5>
+          <h5>Author | <a href="">{{$book->author}}</a></h5>
           <h4>Capture | <a href="">{{$book->title}}</a></h4>
           <h5>Description</h5>
           <p>{{$book->description}}</p>
-          <h4>Category | <a href="">{{$book->category->name}}</a>
+          <h4>Category | <a href="">{{$book->category}}</a>
           </h4>
           
           <button type="button" class="btn btn-success">Read</button>

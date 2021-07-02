@@ -11,14 +11,14 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index'); 
 
-Route::get('/accaunt', [App\Http\Controllers\HomeController::class, 'index'])->name('accaunt');
+Route::get('/accaunt', [App\Http\Controllers\AccauntController::class, 'accaunt'])->name('accaunt');
+
+Route::get('/accaunt', [App\Http\Controllers\AccauntController::class, 'getBooks'])->name('accaunt');
 
 
 Route::group(['prefix'=>'books', 'as'=>'books.'],function () {
 
  Route::post('/create', [BookController::class, 'create'])->name('create');
-
- 
 
  Route::get('/create', [BookController::class, 'show'])->name('show');
 
@@ -32,6 +32,7 @@ Route::get('/image-upload', [ ImageUploadController::class, 'imageUpload' ])->na
 Route::post('/image-upload', [ ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');
 
 Route::post('/ckeditor/upload', [App\Http\Controllers\CKEditorController::class, 'upload'])->name('ckeditor.image-upload');
+
 
 
 Route::get('/libreadbook', [App\Http\Controllers\lib_read_bookController::class, 'libReadBook'])->name('libreadbook');

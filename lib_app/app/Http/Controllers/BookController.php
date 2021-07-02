@@ -23,30 +23,14 @@ class BookController extends Controller
     
     public function create(Request $req)
     {
-        
-
-        $author = Author::create(
-            [
-               'name' => $req->input('author')
-            ]
-        );
-
-        $category = Category::create(
-            [
-                 'name' => $req->input('category')
-            ]
-        );
-        
-        
-                 
         $book = Book::create(
                    [
                     'title' => $req->input('title'),
+                    'author' => $req->input('author'),
+                    'category' => $req->input('category'),
                     'description' => $req->input('description'),
                     'content' => $req->input('wysiwyg-editor'),
                     'user_id' => Auth::user()->id,
-                    'author_id' => $author->id,
-                    'category_id' => $category->id
                     ]
             );
         $file = $req->file('file');
@@ -61,15 +45,18 @@ class BookController extends Controller
          
         return redirect()->route('accaunt');
     }
-
+    
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $book = Book::findOrFail($id)->with('author','category')->first();
+        $book = Book::find($id);
         if($data){
            
            $book->status = $request->input('publish') ? 1 : 0;
            $book->title = $request->input('title');
+           $book->author = $request->input('author');
+           $book->category = $request->input('category');
+           $book->content =  $request->input('wysiwyg-editor');
            $book->save();
 
            return redirect()->route('accaunt');
@@ -78,6 +65,7 @@ class BookController extends Controller
         
         return view('user.books.update',['book' =>$book]);
     }
+    
 
     public function delete($id){
 

@@ -47,7 +47,7 @@
     </form>
 
   
-    <script src="../ckeditor/ckeditor.js"></script>
+   <script src="../ckeditor/ckeditor.js"></script> 
     <script type="text/javascript">
         $(document).ready(function () {
             $('.ckeditor').ckeditor();
@@ -71,6 +71,7 @@
         });
 
     </script>
+    
     <script type="text/javascript">
         CKEDITOR.replace('wysiwyg-editor', {
             filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
